@@ -1,0 +1,23 @@
+class Solution {
+    public int minimumPushes(String word) {
+        int[] count = new int[26];
+        for(char c : word.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        java.util.Arrays.sort(count);
+
+        int totalPushes = 0;
+        int distinctCharsProcessed = 0;
+
+        for(int i=25; i>=0; i--) {
+            if(count[i]==0) break;
+
+            int multiplier = (distinctCharsProcessed / 8) + 1;
+            totalPushes += count[i] * multiplier;
+            distinctCharsProcessed++;
+        }
+
+        return totalPushes;
+    }
+}
