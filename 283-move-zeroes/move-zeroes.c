@@ -1,13 +1,13 @@
 void moveZeroes(int* nums, int numsSize) {
-    int nonZero = 0;
+    int lastNonZeroIndex = 0;
     for(int i=0; i<numsSize; i++) {
         if(nums[i] != 0) {
-            nums[nonZero] = nums[i];
-            nonZero++;
+            nums[lastNonZeroIndex++] = nums[i];
         }
-        
     }
-    for(int i=nonZero; i<numsSize; i++) {
+    for(int i=lastNonZeroIndex; i<numsSize; i++) {
         nums[i] = 0;
     }
 }
+        
+            
