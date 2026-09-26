@@ -1,18 +1,31 @@
 class Solution {
 public:
-       int missingNumber(vector<int>& nums) {
+    int missingNumber(vector<int>& nums) {
         int n = nums.size();
-        int arraySum = 0;
-        int zeroToNSum = 0;
+        vector<bool> flag(n+1,false);
         for(int i=0; i<n; i++) {
-            arraySum += nums[i];
+            flag[nums[i]] = true;
         }
         for(int i=0; i<=n; i++) {
-            zeroToNSum += i;
+            if(flag[i] == false) return i;
         }
-        return (zeroToNSum - arraySum);
+        return 0; // TC - O(n) 
     }
 };
+
+//        int missingNumber(vector<int>& nums) {
+//         int n = nums.size();
+//         int arraySum = 0;
+//         int zeroToNSum = 0;
+//         for(int i=0; i<n; i++) {
+//             arraySum += nums[i];
+//         }
+//         for(int i=0; i<=n; i++) {
+//             zeroToNSum += i;
+//         }
+//         return (zeroToNSum - arraySum);
+//     }
+// };
 
 //     int missingNumber(vector<int>& nums) {
 //         int n = nums.size();
